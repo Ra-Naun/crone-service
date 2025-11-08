@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  cronicle:
+    image: soulteary/cronicle:sha-b321cdd
+    container_name: cronicle
+    ports:
+      - "3012:3012" # Проброс порта 3012 хоста на порт 3012 контейнера
+    environment:
+      - TZ=Europe/Moscow # Установите свой часовой пояс
+    volumes:
+      # Привязка локальных папок к папкам внутри контейнера для сохранения данных
+      - ./data:/opt/cronicle/data:rw
+      - ./logs:/opt/cronicle/logs:rw
+      # Монтируем HTTP‑раннер как плагин
+      - ./http-post.sh:/opt/cronicle/plugins/http-post.sh:ro
+      # Синхронизация системного времени хоста с контейнером (только чтение)
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    restart: unless-stopped
+    networks:
+      - wetdreams-dev-network
+
+networks:
+  wetdreams-dev-network:
+    external: true
+    name: wetdreams-dev-network
+    

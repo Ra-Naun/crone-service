@@ -1,0 +1,55 @@
+name: Deploy Cronicle
+
+on:
+  workflow_dispatch:
+    inputs:
+      server_path:
+        description: "Remote base path (default: ~/crone-service)"
+        required: false
+        default: "~/crone-service"
+      compose_file:
+        description: "Compose file name in service dir"
+        required: false
+        default: "docker-compose.yaml"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Copy Cronicle service to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.REMOTE_SSH_KEY }}
+          source: "app/**"
+          target: "${{ github.event.inputs.server_path || '~/crone-service' }}/app"
+
+      - name: Start Cronicle via Docker Compose
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.REMOTE_SSH_KEY }}
+          script: |
+            set -euo pipefail
+
+            # Resolve paths
+            BASE_PATH="${{ github.event.inputs.server_path || '~/crone-service' }}"
+            SERVICE_DIR="$BASE_PATH/app"
+            COMPOSE_FILE="${{ github.event.inputs.compose_file || 'docker-compose.yaml' }}"
+
+            cd "$SERVICE_DIR"
+            mkdir -p data logs || true
+
+            # Validate compose and start
+            sudo docker compose -f "$COMPOSE_FILE" pull || true
+            sudo docker compose -f "$COMPOSE_FILE" up -d
+
+            sudo docker compose -f "$COMPOSE_FILE" ps
+            # Print last logs for quick diagnostics
+            sudo docker logs cronicle --tail=200 || true
