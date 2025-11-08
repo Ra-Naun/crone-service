@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#ffffff"/>
+  <rect x="0" y="0" width="960" height="64" fill="#2d3748"/>
+  <text x="24" y="40" font-family="Arial,Helvetica,sans-serif" font-size="22" fill="#ffffff">Шаг 6 — Сохранение и запуск</text>
+
+  <rect x="40" y="100" width="880" height="360" rx="8" fill="#f7fafc" stroke="#e2e8f0"/>
+
+  <rect x="60" y="140" width="140" height="40" rx="6" fill="#38a169"/>
+  <text x="96" y="165" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff">Save</text>
+
+  <rect x="220" y="140" width="160" height="40" rx="6" fill="#3182ce"/>
+  <text x="260" y="165" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff">Run Now</text>
+
+  <text x="60" y="220" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#4a5568">Логи выполнения</text>
+  <rect x="60" y="230" width="840" height="180" rx="6" fill="#ffffff" stroke="#cbd5e0"/>
+  <text x="74" y="258" font-family="Courier New,monospace" font-size="13" fill="#2d3748">POST /api/cron/billing/reconcile-processing 200 OK</text>
+  <text x="74" y="282" font-family="Courier New,monospace" font-size="13" fill="#2d3748">...</text>
+
+  <text x="60" y="430" font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#2d3748">При ошибке проверьте секрет, URL, сетевую доступность и таймзону.</text>
+</svg>
+

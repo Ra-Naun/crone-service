@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#ffffff"/>
+  <rect x="0" y="0" width="960" height="64" fill="#2d3748"/>
+  <text x="24" y="40" font-family="Arial,Helvetica,sans-serif" font-size="22" fill="#ffffff">Шаг 3 — Создание события (New Event)</text>
+
+  <rect x="40" y="100" width="880" height="360" rx="8" fill="#f7fafc" stroke="#e2e8f0"/>
+
+  <rect x="60" y="124" width="150" height="40" rx="6" fill="#3182ce"/>
+  <text x="82" y="150" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff">New Event</text>
+
+  <text x="60" y="200" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#4a5568">Title</text>
+  <rect x="60" y="210" width="380" height="36" rx="4" fill="#ffffff" stroke="#cbd5e0"/>
+  <text x="70" y="234" font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#718096">Billing • Reconcile processing (Renew Due)</text>
+
+  <text x="460" y="200" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#4a5568">Category</text>
+  <rect x="460" y="210" width="200" height="36" rx="4" fill="#ffffff" stroke="#cbd5e0"/>
+  <text x="470" y="234" font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#718096">Billing</text>
+
+  <text x="60" y="280" font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#2d3748">Создайте/выберите категорию для группировки задач.</text>
+</svg>
+
